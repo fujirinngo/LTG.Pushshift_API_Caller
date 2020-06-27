@@ -11,7 +11,8 @@ src Directory (for Source code)
   -An instance can also be initialized with an optional size parameter which tells the API how many entires you want (default is the API's max of 1000)
   
 test Directory (for tests)
-"test/testInput.py": contains unittests for parts of the code in src/input.py
+
+-"test/testInput.py": contains unittests for parts of the code in src/input.py
 
 ## Future Features to Add
 -Using the csv module so the parser returns a csv file with the subreddit and its number of users with at least 5 comments
