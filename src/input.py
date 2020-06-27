@@ -15,7 +15,7 @@ class Input(object):
             start_date = self.start_date
         return f"https://api.pushshift.io/reddit/search/comment/?subreddit={self.subreddit}&after={start_date}&before={self.end_date}&fields=author,created_utc&size=1000"
 
-    # this function is from Medium article @ https://medium.com/@RareLoot/using-pushshifts-api-to-extract-reddit-submissions-fb517b286563
+    # this function is adapted from Medium article @ https://medium.com/@RareLoot/using-pushshifts-api-to-extract-reddit-submissions-fb517b286563
     def getPushshiftData(self, url: str) -> List[Dict]:
         print(url)
         r = requests.get(url)  # sends a HTTP request and gets a response object
@@ -55,12 +55,12 @@ class Input(object):
 
 
 if __name__ == "__main__":
-    # input1 = Input("UCDavis", 1592438400, 1593043200)
-    # url1 = input1.make_url()
-    # JSONobject1 = input1.getPushshiftData(url1)
-    # input1.getAuthorCount(JSONobject1)
+    input1 = Input("UCDavis", 1592438400, 1593043200) # users who posted in r/UCDavis between Thursday, June 18, 2020 12:00:00 AM (GMT) and Thursday, June 25, 2020 12:00:00 AM (GMT)
+    url1 = input1.make_url()
+    JSONobject1 = input1.getPushshiftData(url1)
+    input1.getAuthorCount(JSONobject1)
 
-    input2 = Input("UCDavis", 1590364800, 1593043200)
+    input2 = Input("UCDavis", 1590364800, 1593043200) # users who posted in r/UCDavis between Monday, May 25, 2020 12:00:00 AM (GMT) and Thursday, June 25, 2020 12:00:00 AM (GMT)
     url2 = input2.make_url()
     JSONobject2 = input2.getPushshiftData(url2)
     input2.getAuthorCount(JSONobject2)
