@@ -6,7 +6,7 @@ from typing import List
 def convert2unix(dt_str :str) -> int:
     dt_parsed = parse_date(dt_str)
     dt = datetime(dt_parsed[2], dt_parsed[0], dt_parsed[1], dt_parsed[3], dt_parsed[4], dt_parsed[5], tzinfo=pytz.utc)
-    print(int(dt.timestamp()))
+    #print(int(dt.timestamp()))
     return int(dt.timestamp())
 
 def parse_date(dt_str :str) -> List[int]:

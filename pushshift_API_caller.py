@@ -7,6 +7,7 @@ if __name__ == "__main__":
     start_datetime = convert2unix("06/01/2020 00:00:00")
     end_datetime = convert2unix("06/08/2020 00:00:00")
     for subreddit in subreddit_list:
+        print(f'Currently processing "r/{subreddit}"')
         input = Input(subreddit, start_datetime, end_datetime)
         url_for_submissions = input.make_url_for_submissions()
         JSONobject_for_submissions = input.getPushshiftData(url_for_submissions)

@@ -52,7 +52,6 @@ class Input(object):
 
     def get_author_count_for_comments(self, JSONobject: List[Dict]) -> None:
         count = 0
-        latest_date = None
         for dict in JSONobject:
             author = dict["author"]
             if not author in self.author_list:
@@ -80,7 +79,7 @@ class Input(object):
                 cleaned_author_list.append(author)
         print(cleaned_author_list) # will give a list of usernames that have posted at least 5 times
         print(cleaned_count_dict)
-        print(f"with5 measure: {len(cleaned_count_dict)}")
+        print(f"with5 measure for r/{self.subreddit}: {len(cleaned_count_dict)}")
         return cleaned_count_dict
 
 
