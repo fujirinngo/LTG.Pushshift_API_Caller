@@ -2,7 +2,7 @@
 This project uses the Pushshift API (https://github.com/pushshift/api) to find the number of users who posted at least 5 comments in a subreddit with a given time period.
 
 ## Contents
-### src Directory (for Source code) ###
+#### src Directory (for Source code)
 
 "src/input.py": defines a Input class and methods to find the success measure
   
@@ -11,7 +11,7 @@ This project uses the Pushshift API (https://github.com/pushshift/api) to find t
 <li>An instance can also be initialized with an optional size parameter which tells the API how many entires you want (default is the API's max of 1000)
   
  
-### test Directory (for tests) ###
+#### test Directory (for tests)
 
 <li>"test/testInput.py": contains unittests for parts of the code in src/input.py
 
