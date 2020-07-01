@@ -33,7 +33,6 @@ class Input(object):
 
     def get_author_count_for_submissions(self, JSONobject: List[Dict]) -> None:
         count = 0
-        latest_date = None
         for dict in JSONobject:
             author = dict["author"]
             if not author in self.author_list:
