@@ -1,4 +1,4 @@
-# SGP.PushshiftAPIParser
+# SGP.PushshiftAPICaller
 This project uses the Pushshift API (https://github.com/pushshift/api) to find the number of users who posted at least 5 submisions and/or comments in a subreddit with a given time period.
 
 ## Contents
