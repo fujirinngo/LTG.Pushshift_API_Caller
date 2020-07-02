@@ -2,7 +2,7 @@
 This project uses the Pushshift API (https://github.com/pushshift/api) to find the number of users who posted at least 5 submisions and/or comments in a subreddit with a given time period.
 
 ## Contents
-#### src Directory (for Source code)
+#### src Directory (for source code)
 
 **"date_convertor.py"**: provides functions to take a datetime string and convert it into a UNIX epoch timestamp
 
@@ -28,6 +28,7 @@ Packaages to install in your local computer/environment: None?
 
 ## Future Features to be Added
 <li>Using the csv module so the caller returns a csv file with the subreddit and its number of users with at least 5 comments
-  
+ 
+<li> Folder of JSON objects for unittests? 
 <li>Streamlining the process more?
   
