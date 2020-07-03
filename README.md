@@ -1,7 +1,10 @@
-# SGP.Pushshift_API_Caller
-This project uses the Pushshift API (https://github.com/pushshift/api) to find the number of users who posted at least 5 submisions and/or comments in a subreddit with a given time period.
+# LTG.Pushshift_API_Caller
+This project uses the Pushshift API (https://github.com/pushshift/api) to find the number of users who posted at least 5 submissions and/or comments in a subreddit within a given time period.
 
 ## Contents
+
+**pushshift_API_caller.py**: main Python script that combines all the elements; main "interface" to use the project and find the number of Redditors who made 5 submissions or comments to a subbreddit within a given time period.
+
 #### src Directory (for source code)
 
 **"date_convertor.py"**: provides functions to take a datetime string and convert it into a UNIX epoch timestamp
