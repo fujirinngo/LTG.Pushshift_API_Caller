@@ -16,7 +16,7 @@ This project uses the Pushshift API (https://github.com/pushshift/api) to find t
 <li>An instance can also be initialized with an optional size parameter which tells the API how many entires you want (default is the API's max of 1000)
 
 #### test Directory (for tests)
-**"test_date_converter.py"**: contains unittests for date_converter functions (Note: https://www.epochconverter.com was used to confirm accuracy)
+**"test_date_converter.py"**: contains unittests for src/date_converter.py functions (Note: https://www.epochconverter.com was used to confirm accuracy)
 
 **"test_input.py"**: contains unittests for parts of the code in src/input.py
 
@@ -25,9 +25,18 @@ This project uses the Pushshift API (https://github.com/pushshift/api) to find t
 
 Please run the following in your terminal:
 
-<code> $ git clone https://github.com/fujirinngo/SGP.Pushshift_API_Caller.git </code>
+<code> $ git clone https://github.com/fujirinngo/LTG.Pushshift_API_Caller.git </code>
 
-Packaages to install in your local computer/environment: None?
+Packaages to install in your local computer/environment: requests, pytz
+
+The "request" package can be installed by running the following in your terminal:
+
+<code> $ pip install request </code>
+
+Likewise, the "pytz" package can be installed by running the following in your terminal:
+
+<code> $ pip install pytz </code>
+
 
 ## Future Features to be Added
 <li>Using the csv module so the caller returns a csv file with the subreddit and its number of users with at least 5 comments
