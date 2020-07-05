@@ -103,7 +103,7 @@ if __name__ == "__main__":
     input1.clean_dict()
 
     # Example 1.2:
-    input1 = Input("UCDavis", 1592438400, 1593043200)  # users who posted in r/UCDavis between Thursday, June 18, 2020 12:00:00 AM (GMT) and Thursday, June 25, 2020 12:00:00 AM (GMT)
+    input1 = Input("UCDavis", 1592438400, 1593043200)  # users who commented in r/UCDavis between Thursday, June 18, 2020 12:00:00 AM (GMT) and Thursday, June 25, 2020 12:00:00 AM (GMT)
     url1_for_comments = input1.make_url_for_comments()
     JSONobject_for_submissions = input1.getPushshiftData(url1_for_comments)
     input1.get_author_count_for_comments(JSONobject_for_comments)
@@ -111,7 +111,7 @@ if __name__ == "__main__":
 
 
     # Example 2:
-    input2 = Input("UCDavis", 1590364800, 1593043200) # users who posted in r/UCDavis between Monday, May 25, 2020 12:00:00 AM (GMT) and Thursday, June 25, 2020 12:00:00 AM (GMT)
+    input2 = Input("UCDavis", 1590364800, 1593043200) # users who posted and/or commented in r/UCDavis between Monday, May 25, 2020 12:00:00 AM (GMT) and Thursday, June 25, 2020 12:00:00 AM (GMT)
     url2s = input2.make_url_for_submissions()
     JSONobject2s = input2.getPushshiftData(url2s)
     input2.get_author_count_for_submissions(JSONobject2s)
@@ -123,7 +123,7 @@ if __name__ == "__main__":
 
 
     # Example 3:
-    input3 = Input("BROCKHAMPTON", 1590364800, 1593043200) # users who posted in r/BROCKHAMPTON between Monday, May 25, 2020 12:00:00 AM (GMT) and Thursday, June 25, 2020 12:00:00 AM (GMT)
+    input3 = Input("malefashionadvice", 1590364800, 1593043200) # users who posted and/or commented in r/malefashionadvice between Monday, May 25, 2020 12:00:00 AM (GMT) and Thursday, June 25, 2020 12:00:00 AM (GMT)
     url3s = input3.make_url_for_submissions()
     JSONobject3s = input3.getPushshiftData(url3s)
     input3.get_author_count_for_submissions(JSONobject3s)
