@@ -7,18 +7,18 @@ This project uses the Pushshift API (https://github.com/pushshift/api) to find t
 
 #### src Directory (for source code)
 
-**"date_convertor.py"**: provides functions to take a datetime string and convert it into a UNIX epoch timestamp
+**date_convertor.py**: provides functions to take a datetime string and convert it into a UNIX epoch timestamp
 
-**"input.py"**: defines a Input class and methods to find the success measure for each subreddit.
+**input.py**: defines a Input class and methods to find the success measure for each subreddit.
   
 <li>An instance of the Input class needs: subreddit name as a string (ex.: "UCDavis" for reddit.com/r/UCDavis), a start date, and end date both in Unix Epoch Time
   
 <li>An instance can also be initialized with an optional size parameter which tells the API how many entires you want (default is the API's max of 1000)
 
 #### test Directory (for tests)
-**"test_date_converter.py"**: contains unittests for src/date_converter.py functions (Note: https://www.epochconverter.com was used to confirm accuracy)
+**test_date_converter.py**: contains unittests for src/date_converter.py functions (Note: https://www.epochconverter.com was used to confirm accuracy)
 
-**"test_input.py"**: contains unittests for parts of the code in src/input.py
+**test_input.py**: contains unittests for parts of the code in src/input.py
 
 
 ## Instructions for Installation
@@ -32,6 +32,8 @@ Packaages to install in your local computer/environment: requests, pytz
 The "request" package can be installed by running the following in your terminal:
 
 <code> $ pip install request </code>
+
+(Note: package manager pip is included by default starting with Python 3.4.)
 
 Likewise, the "pytz" package can be installed by running the following in your terminal:
 
