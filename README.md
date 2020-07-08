@@ -45,6 +45,5 @@ Likewise, the "pytz" package can be installed by running the following in your t
 ## Future Features to be Added
 <li>Using the csv module so the caller returns a csv file with the subreddit and its number of users with at least 5 comments
  
-<li> Folder of JSON objects for unittests? 
 <li>Streamlining the process more?
   
