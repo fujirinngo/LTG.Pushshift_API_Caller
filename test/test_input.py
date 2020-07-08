@@ -8,13 +8,21 @@ class TestInput(unittest.TestCase):
         input = Input("UCDavis", 1234567890, 9876543210)
         self.assertEqual(input.make_url_for_submissions(), "https://api.pushshift.io/reddit/search/submission/?subreddit=UCDavis&after=1234567890&before=9876543210&fields=author,created_utc&size=500")
 
-    def test_get_author_count(self):
+    def test_get_author_count_v1(self):
         input = Input("FakeSubreddit", 1592438400, 1593043200)
         with open("./sample_json/simple_only5.json") as f:
             JSONobject = json.load(f)
             input.get_author_count_for_submissions(JSONobject['data'])
-            cleaned_dict = input.author_count_dict
-        self.assertEqual(cleaned_dict, {'JoeSchmoe': 5})
+            author_count_dict = input.author_count_dict
+        self.assertEqual(author_count_dict, {'JoeSchmoe': 5})
+
+    def test_get_author_count_v2(self):
+        input = Input("FakeSubreddit", 1592438400, 1593043200)
+        with open("./sample_json/mix.json") as f:
+            JSONobject = json.load(f)
+            input.get_author_count_for_submissions(JSONobject['data'])
+            author_count_dict = input.author_count_dict
+        self.assertEqual(author_count_dict, {'JoeSchmoe': 5, 'ChickenTenderFan': 5,'reddit_user123': 3})
 
     def test_clean_dict(self):
         Input.subreddit = "FakeSubreddit"
