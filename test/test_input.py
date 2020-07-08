@@ -28,6 +28,7 @@ class TestInput(unittest.TestCase):
         Input.subreddit = "FakeSubreddit"
         Input.author_count_dict = {'JoeSchmoe': 3, 'RedditUser123': 5, '[deleted]': 8, 'OfficialUCDavis': 12}
         Input.author_list = ['JoeSchmoe', 'RedditUser123', '[deleted]', 'OfficialUCDavis']
+        Input.obj_processed_count = 28
         cleaned_dict = Input.clean_dict(Input)
         self.assertEqual(cleaned_dict, {'RedditUser123': 5, 'OfficialUCDavis': 12})
 
@@ -35,7 +36,6 @@ class TestInput(unittest.TestCase):
         Input.subreddit = "FakeSubreddit"
         Input.author_count_dict = {'JoeSchmoe': 3, 'ChickenTenderLover': 1, '[deleted]': 20, 'AbacusWizard': 4}
         Input.author_list = ['JoeSchmoe', 'ChickenTenderLover', '[deleted]', 'AbacusWizard']
+        Input.obj_processed_count = 28
         cleaned_dict = Input.clean_dict(Input)
         self.assertEqual(cleaned_dict, {})
-
-

@@ -14,5 +14,3 @@ class TestDateConverter(unittest.TestCase):
         unix_timestamp = convert2unix("05/25/2020 00:00:00")
         self.assertEqual(unix_timestamp, 1590364800)
 
-if __name__ == "__main__":
-    unittest.main()
