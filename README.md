@@ -27,7 +27,7 @@ This project uses the Pushshift API (https://github.com/pushshift/api) to find t
 
 Please run the following in your terminal:
 
-<code> $ git clone https://github.com/fujirinngo/LTG.Pushshift_API_Caller.git </code>
+<code> $ git clone https://gitlab.com/c2lab_/freygroup/pushshift-api-caller.git </code>
 
 Packaages to install in your local computer/environment: **requests**, **pytz**
 
@@ -43,7 +43,4 @@ Likewise, the "pytz" package can be installed by running the following in your t
 
 
 ## Future Features to be Added
-<li>Using the csv module so the caller returns a csv file with the subreddit and its number of users with at least 5 comments
-
-<li>Streamlining the process more?</li>
-  
+<li>Using the csv module to integrate the caller with the overall pipeline
