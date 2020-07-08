@@ -20,6 +20,8 @@ This project uses the Pushshift API (https://github.com/pushshift/api) to find t
 
 **test_input.py**: contains unittests for parts of the code in src/input.py
 
+**sample_json** folder contains json objects that mimics Pushshift API outputs for testing purposes
+
 
 ## Instructions for Installation
 
@@ -27,7 +29,7 @@ Please run the following in your terminal:
 
 <code> $ git clone https://github.com/fujirinngo/LTG.Pushshift_API_Caller.git </code>
 
-Packaages to install in your local computer/environment: requests, pytz
+Packaages to install in your local computer/environment: **requests**, **pytz**
 
 The "request" package can be installed by running the following in your terminal:
 

@@ -10,7 +10,7 @@ class TestInput(unittest.TestCase):
 
     def test_get_author_count(self):
         input = Input("FakeSubreddit", 1592438400, 1593043200)
-        with open("C:\\Users\\ssfuj\\PycharmProjects\\LTG Pushshift API Caller\\sample-ps-output.json") as f:
+        with open("./sample_json/simple_only5.json") as f:
             JSONobject = json.load(f)
             input.get_author_count_for_submissions(JSONobject['data'])
             cleaned_dict = input.author_count_dict
