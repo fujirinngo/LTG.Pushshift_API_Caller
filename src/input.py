@@ -6,15 +6,22 @@ from typing import List, Dict
 
 
 class Input(object):
-    def __init__(self, subreddit :str, start_date :int, end_date :int, size :int=500) -> None:
+    def __init__(self, subreddit :str, start_date :int, end_date :int, size :int=100) -> None:
         self.subreddit = subreddit
         self.start_date = start_date
         self.end_date = end_date
         self.size = size
+        self.ratelimit = 0
         self.author_list = []
         self.author_count_dict = {}
         self.obj_processed_count = 0
         self.with5_measure = 0
+
+    def get_ratelimit(self):
+        r = requests.get("https://api.pushshift.io/meta")
+        metadata = json.loads(r.text)
+        print(metadata["server_ratelimit_per_minute"])
+        self.ratelimit = metadata["server_ratelimit_per_minute"]
 
     def make_url_for_submissions(self, start_date = None) -> str:
         if start_date is None:
@@ -28,11 +35,18 @@ class Input(object):
 
     # this function is adapted from Medium article @ https://medium.com/@RareLoot/using-pushshifts-api-to-extract-reddit-submissions-fb517b286563
     def getPushshiftData(self, url: str) -> List[Dict]:
-        #print(url)
-        r = requests.get(url)  # sends a HTTP request and gets a response object
-        data = json.loads(r.text)
-        print("Processing", len(data["data"]), "items")  # gives the number of JSON objects from URL
-        return data["data"]  # data["data"] is a list of dicts
+        try_count = 1
+        while try_count < 5:
+            try:
+                time.sleep(60/self.ratelimit)
+                r = requests.get(url)  # sends a HTTP request and gets a response object
+                data = json.loads(r.text)
+                print("Processing", len(data["data"]), "items")  # gives the number of JSON objects from URL
+                return data["data"]  # data["data"] is a list of dicts
+            except:
+                print("Pausing and trying again...")
+                time.sleep(30)
+                try_count += 1
 
     def get_author_count_for_submissions(self, JSONobject: List[Dict]) -> None:
         count = 0
@@ -48,10 +62,7 @@ class Input(object):
             self.obj_processed_count += 1
         if count == self.size:
             latest_date = dict["created_utc"]
-            #print(latest_date)
             return self.get_author_count_for_submissions(self.getPushshiftData(self.make_url_for_submissions(start_date=latest_date)))
-        # print(author_list)
-        # print(author_count_dict)
         return self.author_count_dict
 
     def get_author_count_for_comments(self, JSONobject: List[Dict]) -> None:
@@ -68,10 +79,7 @@ class Input(object):
             self.obj_processed_count += 1
         if count == self.size:
             latest_date = dict["created_utc"]
-            #print(latest_date)
             return self.get_author_count_for_comments(self.getPushshiftData(self.make_url_for_comments(start_date=latest_date)))
-        # print(author_list)
-        # print(author_count_dict)
         return self.author_count_dict
 
     def clean_dict(self) -> Dict[str, int]:
@@ -101,12 +109,18 @@ if __name__ == "__main__":
     input1.get_author_count_for_comments(JSONobject_for_comments)
     input1.clean_dict()
 
+    # RESULT: with5 measure for r/UCDavis: 81
+    #         Total objects processed:  1708
+
     # Example 1.1:
     input1_1 = Input("UCDavis", 1592438400, 1593043200)  # users who posted in r/UCDavis between Thursday, June 18, 2020 12:00:00 AM (GMT) and Thursday, June 25, 2020 12:00:00 AM (GMT)
     url1_1_for_submissions = input1_1.make_url_for_submissions()
     JSONobject_for_submissions = input1_1.getPushshiftData(url1_for_submissions)
     input1_1.get_author_count_for_submissions(JSONobject_for_submissions)
     input1_1.clean_dict()
+
+    # RESULT: with5 measure for r/UCDavis: 1
+    #         Total objects processed:  231
 
     # Example 1.2:
     input1_2 = Input("UCDavis", 1592438400, 1593043200)  # users who commented in r/UCDavis between Thursday, June 18, 2020 12:00:00 AM (GMT) and Thursday, June 25, 2020 12:00:00 AM (GMT)
@@ -127,7 +141,8 @@ if __name__ == "__main__":
     input2.get_author_count_for_comments(JSONobject2c)
     input2.clean_dict()
 
-    # RESULTS: with5 measure: 409; Total objects processed: 7550
+    # RESULTS: with5 measure: 409
+    #          Total objects processed: 7550
 
     # Example 3:
     input3 = Input("malefashionadvice", 1590364800, 1593043200) # users who posted and/or commented in r/malefashionadvice between Monday, May 25, 2020 12:00:00 AM (GMT) and Thursday, June 25, 2020 12:00:00 AM (GMT)
@@ -139,3 +154,6 @@ if __name__ == "__main__":
     JSONobject3c = input3.getPushshiftData(url3c)
     input3.get_author_count_for_comments(JSONobject3c)
     input3.clean_dict()
+
+    # RESULT: with5 measure for r/malefashionadvice: 991
+    #         Total objects processed:  33806

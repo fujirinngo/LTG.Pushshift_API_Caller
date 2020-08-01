@@ -3,7 +3,7 @@ This project uses the Pushshift API (https://github.com/pushshift/api) to find t
 
 ## Contents
 
-**pushshift_API_caller.py**: main Python script that combines all the elements; main "interface" to use the project and find the number of Redditors who made 5 submissions or comments to a subbreddit within a given time period.
+**pushshift_API_caller.py**: main Python script that combines all the elements; main "interface" to use the project and find the number of users who made 5 submissions or comments to a subbreddit within a given time period.
 
 #### src Directory (for source code)
 
@@ -35,12 +35,6 @@ The "request" package can be installed by running the following in your terminal
 
 <code> $ pip install request </code>
 
-(Note: package manager pip is included by default starting with Python 3.4.)
-
 Likewise, the "pytz" package can be installed by running the following in your terminal:
 
 <code> $ pip install pytz </code>
-
-
-## Future Features to be Added
-<li>Using the csv module to integrate the caller with the overall pipeline
